@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bansuri Studio | Reels, promos and websites in Pilibhit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Hind:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#f1f4e6; --surface:#e3e9cf; --ink:#14231e; --muted:#4b5c52;
+  --bamboo:#c9a43a; --leaf:#4f7d45; --deep:#12332c; --on-deep:#f1f4e6; --line:#c5cfab;
+  --display:"Bricolage Grotesque","Trebuchet MS",sans-serif;
+  --body:"Hind","Segoe UI",Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1d19; --surface:#17291f; --ink:#eef2df; --muted:#a5b4a6;
+    --bamboo:#e0bd54; --leaf:#8fbf7e; --deep:#0a1512; --on-deep:#eef2df; --line:#2a4136;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f1d19; --surface:#17291f; --ink:#eef2df; --muted:#a5b4a6;
+  --bamboo:#e0bd54; --leaf:#8fbf7e; --deep:#0a1512; --on-deep:#eef2df; --line:#2a4136;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.65}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+h1,h2,h3{font-family:var(--display);line-height:1.08;margin:0;letter-spacing:-.02em}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--bamboo);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 1.25rem}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-family:var(--display);font-weight:800;font-size:1.2rem;text-decoration:none;display:flex;gap:.5rem;align-items:center}
+.logo svg{width:26px;height:26px}
+nav{display:flex;gap:1.4rem;align-items:center}
+nav a{text-decoration:none;font-weight:500;font-size:.98rem}
+nav a:hover{color:var(--leaf)}
+.btn{display:inline-block;background:var(--deep);color:var(--on-deep);padding:.8rem 1.4rem;border-radius:999px;font-weight:600;text-decoration:none;border:2px solid var(--deep);cursor:pointer;font-family:var(--body);font-size:1rem}
+.btn:hover{background:var(--leaf);border-color:var(--leaf);color:#fff}
+.btn.alt{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn.alt:hover{background:var(--ink);color:var(--bg)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .btn{background:var(--bamboo);color:#14231e;border-color:var(--bamboo)}}
+@media(max-width:640px){nav a:not(.btn){display:none}}
+
+/* hero */
+.hero{padding:4rem 0 3rem}
+.hero h1{font-size:clamp(2.6rem,8vw,5.6rem);font-weight:800;max-width:14ch}
+.hero p.lead{font-size:1.25rem;max-width:46ch;color:var(--muted);margin:1.4rem 0 2rem}
+.hero .cta{display:flex;gap:.8rem;flex-wrap:wrap}
+.flute{margin-top:3rem;overflow-x:auto}
+.flute svg{display:block;width:100%;min-width:640px;height:auto}
+.flute .hole{fill:var(--bg);stroke:var(--deep);stroke-width:3;cursor:pointer;transition:fill .2s}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .flute .hole{stroke:#0a1512}}
+.flute .hole:hover,.flute .hole.on{fill:var(--bamboo)}
+.flute text{font-family:var(--body);font-size:15px;fill:var(--muted)}
+.flute-note{color:var(--muted);font-size:.95rem;margin:.4rem 0 0}
+
+/* services */
+section{padding:4.5rem 0}
+.sec-head{max-width:34rem;margin-bottom:2.5rem}
+.sec-head h2{font-size:clamp(2rem,5vw,3.2rem)}
+.sec-head p{color:var(--muted);margin:.8rem 0 0}
+.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0;border-top:2px solid var(--ink)}
+.svc{padding:1.5rem 1.2rem 1.6rem 0;border-bottom:1px solid var(--line);transition:background .2s}
+.svc.on{background:var(--surface)}
+.svc h3{font-size:1.35rem;margin-bottom:.4rem}
+.svc p{margin:0;color:var(--muted)}
+
+.filters{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.6rem}
+.chip{font:inherit;font-weight:600;padding:.5rem 1.1rem;border-radius:999px;border:2px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.work{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.6rem}
+.item[hidden]{display:none}
+.thumb{aspect-ratio:4/3;border-radius:6px 22px 6px 22px;display:grid;place-items:center;background:var(--c,#4f7d45)}
+.phone{width:34%;aspect-ratio:9/16;background:rgba(255,255,255,.93);border-radius:14px;display:grid;place-items:center;box-shadow:0 0 0 5px rgba(0,0,0,.25)}
+.phone::before{content:"";border-left:16px solid var(--c,#4f7d45);border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:5px}
+.browser{width:78%;background:#f7f7f2;border-radius:8px;overflow:hidden;box-shadow:0 0 0 4px rgba(0,0,0,.2)}
+.browser i{display:block;height:14px;background:#d9d9d0}
+.browser b{display:block;height:50px;background:var(--c,#4f7d45);filter:brightness(.8)}
+.browser span{display:block;height:6px;margin:7px 9px;background:#cfcfc4;border-radius:3px}
+.item h3{font-size:1.2rem;margin:.8rem 0 .2rem}
+.item p{margin:0;color:var(--muted);font-size:.97rem}
+.tag{font-weight:600;font-size:.88rem;color:var(--leaf)}
+.item[data-t="reel"] .thumb{position:relative;overflow:hidden;cursor:pointer}
+.thumb video,.stage video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pv{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:.8rem;opacity:0;transition:opacity .25s;pointer-events:none;background:linear-gradient(transparent 55%,rgba(0,0,0,.55))}
+.pv small{color:#fff;font-weight:600;margin-bottom:.4rem}
+.pv .bar{height:4px;background:rgba(255,255,255,.35);border-radius:2px;overflow:hidden}
+.pv .bar i{display:block;height:100%;width:0;background:#fff}
+.play .pv{opacity:1}
+.play .pv .bar i{animation:fill 4s linear infinite}
+.play .phone{animation:pulse 1.6s ease-in-out infinite}
+@keyframes fill{to{width:100%}}
+@keyframes pulse{50%{transform:scale(1.07)}}
+@media (prefers-reduced-motion:reduce){.play .pv .bar i,.play .phone{animation:none!important}.play .pv .bar i{width:100%}}
+dialog{border:0;border-radius:18px;padding:0;width:min(400px,92vw);background:var(--bg);color:var(--ink)}
+dialog::backdrop{background:rgba(0,0,0,.65)}
+.stage{position:relative;aspect-ratio:9/16;max-height:58vh;margin:0 auto;background:var(--c,#4f7d45);display:grid;place-items:center;overflow:hidden}
+.stage .phone{width:36%}
+.mbody{padding:1.1rem 1.3rem 1.3rem}
+.mbody h3{font-size:1.4rem}
+.mbody p{color:var(--muted);margin:.3rem 0 1rem}
+.mbody .row{display:flex;gap:.6rem;flex-wrap:wrap}
+.wa{position:fixed;right:1rem;bottom:calc(1rem + env(safe-area-inset-bottom,0px));z-index:20;width:58px;height:58px;border-radius:50%;background:#1faa59;display:grid;place-items:center;box-shadow:0 6px 18px rgba(0,0,0,.3)}
+.wa svg{width:30px;height:30px;fill:#fff}
+.wa:hover{background:#178a47}
+.quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.4rem}
+.quote{background:var(--surface);padding:1.5rem;border-radius:6px 24px 6px 24px;margin:0}
+.stars{color:var(--bamboo);letter-spacing:.15em;font-size:1.15rem}
+.quote p{margin:.6rem 0 1rem}
+.quote footer{border:0;padding:0;color:var(--muted);font-size:.95rem}
+.quote footer strong{color:var(--ink);display:block}
+.ig{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.8rem;margin-bottom:1.4rem}
+.igt{aspect-ratio:1;display:flex;align-items:flex-end;padding:.8rem;color:#fff;font-weight:600;line-height:1.25;text-decoration:none;border-radius:6px 18px 6px 18px;background:linear-gradient(transparent 35%,rgba(0,0,0,.55)),var(--c)}
+.igt:hover{filter:brightness(1.1)}
+.faq{max-width:760px}
+details{border-top:1px solid var(--line);padding:1rem 0}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-family:var(--display);font-weight:700;font-size:1.15rem;list-style:none;display:flex;justify-content:space-between;gap:1rem}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:1.5rem;line-height:1;color:var(--leaf)}
+details[open] summary::after{content:"−"}
+details p{margin:.6rem 0 0;color:var(--muted);max-width:60ch}
+.hero h1,.hero .lead,.hero .cta{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+.hero .lead{animation-delay:.15s}
+.hero .cta{animation-delay:.3s}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}}
+.flute .hole{animation:note 5.4s ease-in-out infinite}
+.flute .hole:nth-child(2){animation-delay:.5s}
+.flute .hole:nth-child(3){animation-delay:1s}
+.flute .hole:nth-child(4){animation-delay:1.5s}
+.flute .hole:nth-child(5){animation-delay:2s}
+.flute .hole:nth-child(6){animation-delay:2.5s}
+.flute.played .hole{animation:none}
+@keyframes note{0%,28%,100%{fill:var(--bg)}8%,18%{fill:var(--bamboo)}}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1),background .2s}
+.reveal.in{opacity:1;transform:none}
+.item[data-t="reel"] .thumb{transition:transform .3s ease}
+.item.play .thumb{transform:translateY(-5px) rotate(-1deg)}
+.wa::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #1faa59;animation:ring 2.4s ease-out infinite}
+@keyframes ring{to{transform:scale(1.55);opacity:0}}
+@media (prefers-reduced-motion:reduce){.hero h1,.hero .lead,.hero .cta,.flute .hole,.wa::after{animation:none!important}.reveal{opacity:1;transform:none;transition:none}.item.play .thumb{transform:none}}
+/* process */
+.band{background:var(--deep);color:var(--on-deep)}
+.band .sec-head p{color:#b9c8b8}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem;counter-reset:s}
+.steps li{counter-increment:s;border-left:3px solid var(--bamboo);padding-left:1.1rem}
+.steps li::before{content:"Step " counter(s);display:block;color:var(--bamboo);font-weight:600;margin-bottom:.3rem}
+.steps h3{font-size:1.3rem;margin-bottom:.3rem}
+.steps p{margin:0;color:#c9d5c7}
+
+/* packages */
+.pk{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.4rem}
+.pkg{border:2px solid var(--ink);padding:1.6rem;display:flex;flex-direction:column;gap:.6rem;border-radius:6px 28px 6px 28px}
+.pkg.best{background:var(--bamboo);color:#14231e;border-color:var(--bamboo)}
+.pkg h3{font-size:1.5rem}
+.pkg .price{font-family:var(--display);font-size:2rem;font-weight:800}
+.pkg ul{margin:.2rem 0 0;padding-left:1.1rem}
+.pkg li{margin:.25rem 0}
+.pkg.best .btn{background:#14231e;border-color:#14231e;color:#f1f4e6}
+.fine{color:var(--muted);font-size:.92rem;margin-top:1.4rem}
+
+/* contact */
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+@media(max-width:760px){.contact{grid-template-columns:1fr;gap:2rem}}
+.contact h2{font-size:clamp(2rem,5vw,3.2rem)}
+.contact .info p{margin:.6rem 0;color:var(--muted)}
+.contact .info strong{color:var(--ink)}
+.f{display:flex;flex-direction:column;gap:1rem}
+label{font-weight:600;font-size:.95rem;display:block;margin-bottom:.25rem}
+input,select,textarea{width:100%;font:inherit;color:var(--ink);background:var(--surface);border:2px solid var(--line);border-radius:10px;padding:.7rem .9rem}
+input:focus,select:focus,textarea:focus{border-color:var(--leaf);outline:none}
+textarea{min-height:100px;resize:vertical}
+footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--muted);font-size:.95rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.6rem}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Bansuri Studio home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="2" y="12" width="28" height="8" rx="4" fill="#c9a43a"/><circle cx="10" cy="16" r="1.6" fill="#12332c"/><circle cx="16" cy="16" r="1.6" fill="#12332c"/><circle cx="22" cy="16" r="1.6" fill="#12332c"/></svg>
+      Bansuri Studio
+    </a>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#process">How it works</a>
+      <a href="#packages">Packages</a>
+      <a href="#faq">FAQ</a>
+      <a href="#web">Websites</a>
+      <a class="btn" href="#contact">Get a reel</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<div class="wrap hero">
+  <h1>Your shop, played in reels.</h1>
+  <p class="lead">We make Instagram reels and promo videos for shops, salons, restaurants and coaching centres in Pilibhit. We also build websites to go with them.</p>
+  <div class="cta">
+    <a class="btn" href="#contact">Book a free consultation</a>
+    <a class="btn alt" href="#packages">See packages</a>
+  </div>
+
+  <div class="flute" aria-label="A bansuri with six holes, one for each service">
+    <svg viewBox="0 0 960 150" role="img" aria-label="Bansuri flute illustration">
+      <defs>
+        <linearGradient id="bam" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#e3c35f"/><stop offset=".55" stop-color="#c9a43a"/><stop offset="1" stop-color="#9c7d22"/>
+        </linearGradient>
+      </defs>
+      <rect x="20" y="50" width="920" height="48" rx="24" fill="url(#bam)"/>
+      <rect x="150" y="50" width="6" height="48" fill="#12332c" opacity=".55"/>
+      <rect x="520" y="50" width="6" height="48" fill="#12332c" opacity=".55"/>
+      <rect x="880" y="50" width="6" height="48" fill="#12332c" opacity=".55"/>
+      <ellipse cx="90" cy="74" rx="16" ry="9" fill="#12332c"/>
+      <g id="holes">
+        <circle class="hole" data-i="0" cx="300" cy="74" r="13" tabindex="0" role="button" aria-label="Reel shoots"/>
+        <circle class="hole" data-i="1" cx="370" cy="74" r="13" tabindex="0" role="button" aria-label="Video editing"/>
+        <circle class="hole" data-i="2" cx="440" cy="74" r="13" tabindex="0" role="button" aria-label="Promo ads"/>
+        <circle class="hole" data-i="3" cx="610" cy="74" r="13" tabindex="0" role="button" aria-label="Product photos"/>
+        <circle class="hole" data-i="4" cx="680" cy="74" r="13" tabindex="0" role="button" aria-label="Festival offers"/>
+        <circle class="hole" data-i="5" cx="750" cy="74" r="13" tabindex="0" role="button" aria-label="Page handling"/>
+      </g>
+      <text x="300" y="130" text-anchor="middle">Shoot</text>
+      <text x="370" y="130" text-anchor="middle">Edit</text>
+      <text x="440" y="130" text-anchor="middle">Ads</text>
+      <text x="610" y="130" text-anchor="middle">Photos</text>
+      <text x="680" y="130" text-anchor="middle">Offers</text>
+      <text x="750" y="130" text-anchor="middle">Pages</text>
+    </svg>
+  </div>
+  <p class="flute-note">Tap a hole to see the service it plays.</p>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>One flute, six notes.</h2>
+      <p>Everything a local business needs to look good online, from the first shoot to the last post.</p>
+    </div>
+    <div class="services" id="svcList">
+      <div class="svc"><h3>Reel shoots</h3><p>We come to your shop or location and film vertical videos made for Instagram and Facebook.</p></div>
+      <div class="svc"><h3>Video editing</h3><p>Send us your raw clips. We cut, add music, captions and effects, and return a ready-to-post reel.</p></div>
+      <div class="svc"><h3>Promo ads</h3><p>Short, clear videos for new launches, discounts and openings that you can also run as paid ads.</p></div>
+      <div class="svc"><h3>Product photos</h3><p>Clean photos of your menu, clothes, jewellery or stock for your catalogue and WhatsApp status.</p></div>
+      <div class="svc"><h3>Festival offers</h3><p>Diwali, Holi, Eid, wedding season: designed posters and reels ready before the rush.</p></div>
+      <div class="svc"><h3>Page handling</h3><p>We plan and post for you each month so your page stays active without taking your time.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Our Instagram reels.</h2>
+      <p>Hover or tap a reel to preview it. Each one is made for a local business.</p>
+    </div>
+    <div class="filters" role="group" aria-label="Filter work">
+      <button class="chip" data-f="all" aria-pressed="true">All</button>
+      <button class="chip" data-f="reel" aria-pressed="false">Reels</button>
+      <button class="chip" data-f="web" aria-pressed="false">Websites</button>
+    </div>
+    <div class="work">
+      <article class="item" data-t="reel"><div class="thumb" style="--c:#c9a43a"><div class="phone"></div></div><div class="tag">Reel</div><h3>Festival sweets offer</h3><p>A 20-second Diwali promo for a local mithai shop.</p></article>
+      <article class="item" data-t="web"><div class="thumb" style="--c:#4f7d45"><div class="browser"><i></i><b></b><span></span><span style="width:60%"></span></div></div><div class="tag">Website</div><h3>Restaurant menu site</h3><p>Online menu, photos, location and a one-tap WhatsApp order button.</p></article>
+      <article class="item" data-t="reel"><div class="thumb" style="--c:#b5563f"><div class="phone"></div></div><div class="tag">Reel</div><h3>Salon makeover reel</h3><p>Before-and-after clips with music for a bridal package.</p></article>
+      <article class="item" data-t="web"><div class="thumb" style="--c:#3a6f8f"><div class="browser"><i></i><b></b><span></span><span style="width:60%"></span></div></div><div class="tag">Website</div><h3>Coaching centre page</h3><p>Courses, batch timings, results and an admission enquiry form.</p></article>
+      <article class="item" data-t="reel"><div class="thumb" style="--c:#12332c"><div class="phone"></div></div><div class="tag">Reel</div><h3>New shop opening</h3><p>A launch video for a clothing store with a grand-opening date.</p></article>
+      <article class="item" data-t="web"><div class="thumb" style="--c:#8a5a9c"><div class="browser"><i></i><b></b><span></span><span style="width:60%"></span></div></div><div class="tag">Website</div><h3>Boutique catalogue</h3><p>A product gallery with prices and a link to order on WhatsApp.</p></article>
+    </div>
+    <p class="fine">These are sample projects. Replace them with your real client work as you build your portfolio.</p>
+  </div>
+</section>
+
+<section id="web">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Websites for local businesses.</h2>
+      <p>A simple, fast website helps customers find your address, timings and offers any time of day.</p>
+    </div>
+    <div class="services">
+      <div class="svc"><h3>Business website</h3><p>Home, about, gallery and contact pages that look good on every phone.</p></div>
+      <div class="svc"><h3>Menu and catalogue</h3><p>Show your products with prices and let customers order through WhatsApp.</p></div>
+      <div class="svc"><h3>Enquiry and booking</h3><p>Forms for appointments, admissions or quotes, sent straight to you.</p></div>
+      <div class="svc"><h3>Domain and setup</h3><p>We help you get a web address, Google Maps listing and go live.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="web-packages">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Website development packages.</h2>
+      <p>Choose the size that fits your business. Every site works on mobile and links to your WhatsApp.</p>
+    </div>
+    <div class="pk">
+      <div class="pkg">
+        <h3>Basic site</h3>
+        <div class="price">₹X,XXX</div>
+        <ul><li>One-page website</li><li>Address, timings and Google Maps</li><li>WhatsApp and call buttons</li></ul>
+        <a class="btn alt" href="#contact" data-plan="Basic website">Choose Basic</a>
+      </div>
+      <div class="pkg best">
+        <h3>Business site</h3>
+        <div class="price">₹XX,XXX</div>
+        <ul><li>Up to 5 pages</li><li>Photo and reel gallery</li><li>Enquiry form</li><li>Domain setup help</li></ul>
+        <a class="btn" href="#contact" data-plan="Business website">Choose Business</a>
+      </div>
+      <div class="pkg">
+        <h3>Catalogue site</h3>
+        <div class="price">₹XX,XXX</div>
+        <ul><li>Product or menu gallery with prices</li><li>Order through WhatsApp</li><li>Easy to update</li></ul>
+        <a class="btn alt" href="#contact" data-plan="Online catalogue site">Choose Catalogue</a>
+      </div>
+    </div>
+    <p class="fine">Prices and inclusions are placeholders. Replace them with your own rates.</p>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>What local businesses say.</h2>
+    </div>
+    <div class="quotes">
+      <figure class="quote"><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><p>Our Diwali reel brought more people to the shop than any poster we have ever printed.</p><footer><strong>Rahul S.</strong>Sweet shop owner</footer></figure>
+      <figure class="quote"><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><p>They understood our salon right away. The reels look professional and bookings went up.</p><footer><strong>Neha M.</strong>Salon owner</footer></figure>
+      <figure class="quote"><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><p>Our new website gets admission enquiries on WhatsApp every day. Setup was quick and simple.</p><footer><strong>Amit K.</strong>Coaching centre director</footer></figure>
+    </div>
+    <p class="fine">These are sample reviews. Replace them with real feedback from your clients.</p>
+  </div>
+</section>
+
+<section id="instagram">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Follow our work on Instagram.</h2>
+      <p>New reels and client shout-outs every week.</p>
+    </div>
+    <div class="ig" id="igGrid"></div>
+    <a class="btn alt" id="igFollow" target="_blank" rel="noopener" href="#">Follow on Instagram</a>
+  </div>
+</section>
+
+<section class="band" id="process">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>From idea to post in four steps.</h2>
+      <p>No complicated process. You tell us what you sell, we handle the rest.</p>
+    </div>
+    <ol class="steps">
+      <li><h3>Talk</h3><p>Share your business, your customers and what you want to promote.</p></li>
+      <li><h3>Shoot</h3><p>We plan the shots and film at your place, usually in one visit.</p></li>
+      <li><h3>Edit</h3><p>You get a first cut within a few days and can ask for changes.</p></li>
+      <li><h3>Post</h3><p>We hand over the final reel with caption and hashtags, or post it for you.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="packages">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Reel and video packages.</h2>
+      <p>Pick a starting point. We can adjust anything to fit your business.</p>
+    </div>
+    <div class="pk">
+      <div class="pkg">
+        <h3>Starter</h3>
+        <div class="price">₹X,XXX</div>
+        <ul><li>2 edited reels</li><li>Music and captions</li><li>1 round of changes</li></ul>
+        <a class="btn alt" href="#contact" data-plan="Starter">Choose Starter</a>
+      </div>
+      <div class="pkg best">
+        <h3>Growth</h3>
+        <div class="price">₹X,XXX</div>
+        <ul><li>6 reels with shoot day</li><li>Product photos</li><li>Posters for offers</li><li>2 rounds of changes</li></ul>
+        <a class="btn" href="#contact" data-plan="Growth">Choose Growth</a>
+      </div>
+      <div class="pkg">
+        <h3>Monthly</h3>
+        <div class="price">₹X,XXX</div>
+        <ul><li>12 reels each month</li><li>Content plan</li><li>Posting on your page</li><li>Festival specials</li></ul>
+        <a class="btn alt" href="#contact" data-plan="Monthly">Choose Monthly</a>
+      </div>
+    </div>
+    <p class="fine">Prices are placeholders. Replace the ₹X,XXX values with your own rates before sharing.</p>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap faq">
+    <div class="sec-head"><h2>Questions we often hear.</h2></div>
+    <details><summary>How long does a reel take?</summary><p>Most reels are ready in 3 to 5 days after the shoot. Festival rush periods can take a little longer, so book early.</p></details>
+    <details><summary>Can you edit videos I shoot myself?</summary><p>Yes. Send your clips on WhatsApp and we will cut, add music and captions, and return a ready-to-post reel.</p></details>
+    <details><summary>Do you come to my shop?</summary><p>Yes, we shoot at your shop or location anywhere in Pilibhit and nearby towns.</p></details>
+    <details><summary>How many changes can I ask for?</summary><p>Each package includes rounds of changes. Tell us what to fix and we will update the video or page.</p></details>
+    <details><summary>Do I need to own a domain for a website?</summary><p>No. We help you choose and register a web address as part of setup.</p></details>
+    <details><summary>How do I pay?</summary><p>We take an advance to start and the rest on delivery. UPI, cash and bank transfer all work.</p></details>
+  </div>
+</section>
+
+<section class="band" id="contact">
+  <div class="wrap contact">
+    <div class="info">
+      <h2>Let’s make your first reel.</h2>
+      <p>Tell us about your business and we’ll reply on WhatsApp with ideas and a quote.</p>
+      <p><strong>WhatsApp:</strong> +91 XXXXX XXXXX</p>
+      <p><strong>Instagram:</strong> @bansuristudio</p>
+      <p><strong>Area:</strong> Pilibhit and nearby towns, Uttar Pradesh</p>
+    </div>
+    <form class="f" id="leadForm">
+      <div><label for="name">Your name</label><input id="name" required autocomplete="name"></div>
+      <div><label for="biz">Business name and type</label><input id="biz" placeholder="e.g. Sharma Sweets, restaurant" required></div>
+      <div><label for="plan">What do you need?</label>
+        <select id="plan">
+          <option>Not sure yet</option><option>Starter</option><option>Growth</option><option>Monthly</option><option>Only video editing</option><option>Basic website</option><option>Business website</option><option>Online catalogue site</option><option>Reels and a website</option>
+        </select></div>
+      <div><label for="msg">Anything else?</label><textarea id="msg"></textarea></div>
+      <button class="btn" type="submit">Send on WhatsApp</button>
+    </form>
+  </div>
+</section>
+</main>
+
+<a class="wa" id="waBtn" href="#contact" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.2 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 1-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.3.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.1 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.1.1.6-.1 1.2z"/></svg></a>
+
+<dialog id="reelModal" aria-labelledby="mTitle">
+  <div class="stage play" id="mStage"></div>
+  <div class="mbody">
+    <h3 id="mTitle"></h3>
+    <p id="mText"></p>
+    <div class="row"><a class="btn" href="#contact" id="mCta">Get a reel like this</a><button class="btn alt" type="button" id="mClose">Close</button></div>
+  </div>
+</dialog>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Bansuri Studio, Pilibhit</span>
+    <span>Reels, promos and websites for local businesses.</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var holes=[].slice.call(document.querySelectorAll('.hole'));
+  var svcs=[].slice.call(document.querySelectorAll('.svc'));
+  function pick(i){
+    document.querySelector('.flute').classList.add('played');
+    holes.forEach(function(h,k){h.classList.toggle('on',k===i)});
+    svcs.forEach(function(s,k){s.classList.toggle('on',k===i)});
+    if(svcs[i]) svcs[i].scrollIntoView({behavior:'smooth',block:'center'});
+  }
+  holes.forEach(function(h){
+    var i=+h.getAttribute('data-i');
+    h.addEventListener('click',function(){pick(i)});
+    h.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();pick(i)}});
+  });
+  document.querySelectorAll('[data-plan]').forEach(function(a){
+    a.addEventListener('click',function(){document.getElementById('plan').value=a.getAttribute('data-plan')});
+  });
+  var chips=[].slice.call(document.querySelectorAll('.chip'));
+  var items=[].slice.call(document.querySelectorAll('.item'));
+  chips.forEach(function(c){
+    c.addEventListener('click',function(){
+      var f=c.getAttribute('data-f');
+      chips.forEach(function(x){x.setAttribute('aria-pressed',x===c?'true':'false')});
+      items.forEach(function(it){it.hidden=(f!=='all'&&it.getAttribute('data-t')!==f)});
+    });
+  });
+  // Reel previews. To use real videos, add data-src="your-video.mp4" to a reel card.
+  var modal=document.getElementById('reelModal'),stage=document.getElementById('mStage');
+  function pvHTML(){return '<div class="pv"><small>Preview</small><div class="bar"><i></i></div></div>'}
+  function start(it){
+    it.classList.add('play');
+    var s=it.getAttribute('data-src'),th=it.querySelector('.thumb');
+    if(s&&!th.querySelector('video')){var v=document.createElement('video');v.src=s;v.muted=true;v.loop=true;v.playsInline=true;v.autoplay=true;th.insertBefore(v,th.firstChild)}
+  }
+  function stop(it){it.classList.remove('play');var v=it.querySelector('video');if(v){v.pause();v.remove()}}
+  function openReel(it){
+    var th=it.querySelector('.thumb'),s=it.getAttribute('data-src');
+    stage.style.setProperty('--c',th.style.getPropertyValue('--c'));
+    stage.innerHTML=(s?'<video src="'+s+'" autoplay loop muted playsinline controls></video>':'<div class="phone"></div>')+pvHTML();
+    document.getElementById('mTitle').textContent=it.querySelector('h3').textContent;
+    document.getElementById('mText').textContent=it.querySelector('p').textContent;
+    if(modal.showModal)modal.showModal();
+  }
+  [].slice.call(document.querySelectorAll('.item[data-t="reel"]')).forEach(function(it){
+    var th=it.querySelector('.thumb'),title=it.querySelector('h3').textContent;
+    th.insertAdjacentHTML('beforeend',pvHTML());
+    th.tabIndex=0;th.setAttribute('role','button');th.setAttribute('aria-label','Open reel preview: '+title);
+    it.addEventListener('mouseenter',function(){start(it)});
+    it.addEventListener('mouseleave',function(){stop(it)});
+    th.addEventListener('focus',function(){start(it)});
+    th.addEventListener('blur',function(){stop(it)});
+    th.addEventListener('click',function(){openReel(it)});
+    th.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openReel(it)}});
+  });
+  modal.addEventListener('click',function(e){if(e.target===modal)modal.close()});
+  modal.addEventListener('close',function(){stage.innerHTML=''});
+  document.getElementById('mClose').addEventListener('click',function(){modal.close()});
+  document.getElementById('mCta').addEventListener('click',function(){modal.close()});
+
+  // Instagram tiles. Set IG_HANDLE; give a tile its own post link by changing the url below.
+  var IG_HANDLE='bansuristudio';
+  var IG=[['#c9a43a','Diwali sweets reel'],['#4f7d45','Menu site launch'],['#b5563f','Bridal makeover'],['#3a6f8f','Admission ad'],['#12332c','Shop opening'],['#8a5a9c','Boutique catalogue']];
+  var igUrl='https://www.instagram.com/'+IG_HANDLE+'/';
+  document.getElementById('igGrid').innerHTML=IG.map(function(p){return '<a class="igt" style="--c:'+p[0]+'" href="'+igUrl+'" target="_blank" rel="noopener">'+p[1]+'</a>'}).join('');
+  var igf=document.getElementById('igFollow');igf.href=igUrl;igf.textContent='Follow @'+IG_HANDLE;
+
+  // Order: Instagram reels first, websites last
+  var contact=document.getElementById('contact');
+  ['web','web-packages'].forEach(function(id){contact.parentNode.insertBefore(document.getElementById(id),contact)});
+  var wf=document.querySelector('.filters');if(wf)wf.remove();
+  var webWrap=document.querySelector('#web .wrap');
+  var wh=document.createElement('h3');wh.textContent='Recent websites';wh.style.cssText='font-size:1.6rem;margin:3rem 0 1.2rem';
+  var wg=document.createElement('div');wg.className='work';
+  [].slice.call(document.querySelectorAll('.item[data-t="web"]')).forEach(function(it){wg.appendChild(it)});
+  webWrap.appendChild(wh);webWrap.appendChild(wg);
+
+  // Scroll reveal
+  if('IntersectionObserver' in window&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting){var t=e.target;t.classList.add('in');setTimeout(function(){t.style.transitionDelay=''},1000);io.unobserve(t)}
+    })},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+    [].slice.call(document.querySelectorAll('.sec-head,.svc,.item,.pkg,.quote,.igt,details')).forEach(function(el){
+      var k=[].indexOf.call(el.parentNode.children,el);
+      el.classList.add('reveal');el.style.transitionDelay=((k%4)*90)+'ms';io.observe(el);
+    });
+  }
+
+  // Replace with your real number, country code first, digits only
+  var PHONE='91XXXXXXXXXX';
+  document.getElementById('waBtn').href='https://wa.me/'+PHONE+'?text='+encodeURIComponent('Hello Bansuri Studio, I’d like to know more about your services.');
+  document.getElementById('leadForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    var t='Hello Bansuri Studio, I’m '+document.getElementById('name').value+
+      ' from '+document.getElementById('biz').value+
+      '. I’m interested in: '+document.getElementById('plan').value+'. '+
+      document.getElementById('msg').value;
+    window.open('https://wa.me/'+PHONE+'?text='+encodeURIComponent(t),'_blank','noopener');
+  });
+})();
+</script>
+</body>
+</html>
